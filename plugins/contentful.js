@@ -1,16 +1,14 @@
 // ./plugins/contentful.js
 
-const contentful = require('contentful');
-// use default environment config for convenience
-// these will be set via `env` property in nuxt.config.js
-const config = {
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-};
+import { createClient } from 'contentful';
 
-// export `createClient` to use it in page components
-module.exports = {
-  createClient() {
-    return contentful.createClient(config);
-  },
-};
+export default defineNuxtPlugin((nuxtApp) => {
+  const config = useRuntimeConfig();
+  
+  const client = createClient({
+    space: import.meta.server ? config.private?.CONTENTFUL_SPACE_ID : config.public.CONTENTFUL_SPACE_ID,
+    accessToken: import.meta.server ? config.private?.CONTENTFUL_ACCESS_TOKEN : config.public.CONTENTFUL_ACCESS_TOKEN,
+  });
+
+  nuxtApp.provide('contentfulClient', client);
+});
