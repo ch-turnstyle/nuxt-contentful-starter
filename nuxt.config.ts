@@ -26,6 +26,10 @@ export default defineNuxtConfig({
   ],
 
   css: ['~/assets/css/main.css'],
+  
+  image: {
+    domains: ['https://images.ctfassets.net']
+  },
 
   vite: {
     plugins: [

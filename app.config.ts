@@ -1,3 +1,5 @@
+// NuxtUI theme customizations https://ui.nuxt.com/getting-started/theme
+
 export default defineAppConfig({
   ui: {
     container: {

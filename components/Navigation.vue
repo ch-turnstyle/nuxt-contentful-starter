@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
+import type { CtfMenuGroup } from '~/types/contentful';
 
 const { data } = await useAsyncData(async () => {
   const { $contentfulClient } = useNuxtApp();
@@ -9,9 +10,9 @@ const { data } = await useAsyncData(async () => {
   });
 });
 
-const menuGroups = data.value?.items[0].fields.menuItems;
+const menuItems = data.value?.items[0].fields.menuItems;
 
-const navItems = ref<NavigationMenuItem[]>(menuGroups.map(group => {
+const navItems = ref<NavigationMenuItem[]>(menuItems.map((group: CtfMenuGroup) => {
   const groupLabel = group.fields.groupName;
   let groupIcon = 'i-lucide-credit-card';
   groupLabel === 'Pricing' && (groupIcon = 'i-lucide-currency');
@@ -22,9 +23,9 @@ const navItems = ref<NavigationMenuItem[]>(menuGroups.map(group => {
   return {
     label: groupLabel,
     icon: groupIcon,
-    to: hasGroupLink ? `/${group.fields.groupLink.fields.slug}` : '',
+    to: hasGroupLink ? `/${group.fields.groupLink?.fields.slug}` : '',
     children: hasChildren
-      ? group.fields.featuredPages.map(page => ({
+      ? group.fields.featuredPages?.map(page => ({
           label: page.fields.pageName,
           description: page.fields.internalName,
           to: `/${page.fields.slug}`,
@@ -35,5 +36,5 @@ const navItems = ref<NavigationMenuItem[]>(menuGroups.map(group => {
 </script>
 
 <template>
-  <UNavigationMenu :items="navItems" content-orientation="vertical" class="w-full justify-center" />
+  <UNavigationMenu :items="navItems" content-orientation="vertical" class="w-full justify-center z-50" />
 </template>
