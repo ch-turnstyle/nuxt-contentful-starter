@@ -8,37 +8,42 @@ declare module '#app' {
 
 export interface CtfMenuGroup {
   fields: {
-    groupName: string,
+    groupName: string;
     groupLink?: {
       fields: {
-        slug: string,
-      },
-    },
+        slug: string;
+      };
+    };
     featuredPages?: Array<{
       fields: {
-        pageName: string,
-        internalName: string,
-        slug: string,
-      },
-    }>,
-  }
+        pageName: string;
+        internalName: string;
+        slug: string;
+      };
+    }>;
+  };
 }
 
 export interface CtfLandingPage {
   fields: {
-    pageName: string,
-    slug: string,
+    pageName: string;
+    slug: string;
     topSection?: Array<{
-      fields: {},
+      fields: {};
       sys: {}
-    }>,
+    }>;
     pageContent?: Array<{
-      fields: {},
-      sys: {}
-    }>,
+      fields: {};
+      sys: {};
+    }>;
     extraSection?: Array<{
-      fields: {},
-      sys: {}
-    }>,
-  }
+      fields: {};
+      sys: {};
+    }>;
+  };
+}
+
+export interface RichTextOptions {
+  renderMark: {};
+  renderNode: {};
 }

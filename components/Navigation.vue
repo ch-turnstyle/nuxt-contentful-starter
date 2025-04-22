@@ -36,5 +36,5 @@ const navItems = ref<NavigationMenuItem[]>(menuItems.map((group: CtfMenuGroup) =
 </script>
 
 <template>
-  <UNavigationMenu :items="navItems" content-orientation="vertical" class="w-full justify-center z-50" />
+  <UNavigationMenu :items="navItems" content-orientation="vertical" class="bg-white w-full justify-center z-50" />
 </template>

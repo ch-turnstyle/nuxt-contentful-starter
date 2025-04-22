@@ -28,7 +28,17 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   
   image: {
-    domains: ['https://images.ctfassets.net']
+    domains: ['//images.ctfassets.net'],
+    quality: 90,
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+      '2xl': 1536
+    }
   },
 
   vite: {
