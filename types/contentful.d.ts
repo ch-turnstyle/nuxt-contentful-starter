@@ -24,25 +24,6 @@ export interface ContentfulMenuGroup {
   };
 }
 
-export interface ContentfulLandingPage {
-  fields: {
-    pageName: string;
-    slug: string;
-    topSection?: Array<{
-      fields: {};
-      sys: {}
-    }>;
-    pageContent?: Array<{
-      fields: {};
-      sys: {};
-    }>;
-    extraSection?: Array<{
-      fields: {};
-      sys: {};
-    }>;
-  };
-}
-
 export interface RichTextOptions {
   renderMark: {};
   renderNode: {};
@@ -65,4 +46,63 @@ export interface ContentfulImage {
     };
     title?: string;
   };
+}
+
+export interface SeoFields {
+  name: string;
+  title?: string;
+  description?: string;
+  keywords?: string;
+  canonical?: string;
+  image?: {
+    fields: {
+      file: {
+        url: string;
+      }
+    }
+  };
+  noIndex?: boolean;
+  noFollow?: boolean;
+}
+
+export interface PageFields {
+  pageName: string;
+  slug: string;
+  topSection?: Array<{
+    fields: {};
+    sys: {
+      id: string;
+      contentType: {
+        fields: {};
+        sys: {
+          id: string;
+        }
+      }
+    };
+  }>;
+  pageContent?: Array<{
+    fields: {};
+    sys: {};
+  }>;
+  extraSection?: Array<{
+    fields: {};
+    sys: {};
+  }>;
+  seo?: {
+    fields: SeoFields;
+  }
+}
+
+export interface ContentfulEntry<T> {
+  sys: {
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    contentType: {
+      sys: {
+        id: string;
+      }
+    }
+  };
+  fields: T;
 }

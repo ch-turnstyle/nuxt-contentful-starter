@@ -25,6 +25,18 @@ export default defineNuxtConfig({
     '@nuxt/ui'
   ],
 
+  app: {
+    head: {
+      title: 'Starter | Contentful', // default fallback title
+      htmlAttrs: {
+        lang: 'en',
+      },
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      ]
+    }
+  },
+
   css: ['~/assets/css/main.css'],
   
   image: {

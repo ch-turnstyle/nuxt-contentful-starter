@@ -40,7 +40,7 @@ const richTextContent = computed(() => props.data.bodyText || null);
     />
     <UContainer class="relative w-full h-full min-h-[75vh] flex items-center">
       <div class="flex flex-col py-10 h-full w-full lg:w-1/2">
-        <h1 class="text-5xl font-bold mb-4" :class="[!props.data.headline && 'sr-only']">{{ props.data.headline || 'App Name' }}</h1>
+        <h1 class="text-5xl font-bold mb-4" :class="[!props.data.headline && 'sr-only']">{{ props.data.headline || 'Contentful Starter' }}</h1>
         <ContentfulRichText 
           v-if="richTextContent" 
           :document="richTextContent"
@@ -51,7 +51,7 @@ const richTextContent = computed(() => props.data.bodyText || null);
 </template>
 
 <style>
-@reference '~/assets/css/main.css';
+@reference '@/assets/css/main.css';
 
 .contentful-rich-text {
   p {
