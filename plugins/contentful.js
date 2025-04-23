@@ -1,5 +1,3 @@
-// ./plugins/contentful.js
-
 import { createClient } from 'contentful';
 
 export default defineNuxtPlugin((nuxtApp) => {

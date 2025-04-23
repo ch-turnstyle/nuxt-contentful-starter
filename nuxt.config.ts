@@ -22,7 +22,9 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/image',
     '@nuxt/scripts',
-    '@nuxt/ui'
+    '@nuxt/ui',
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
   ],
 
   app: {
@@ -63,6 +65,21 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
     ],
+  },
+
+  sitemap: {
+    sources: [
+      '/api/__sitemap__/urls',
+    ],
+    xslColumns: [
+      { label: 'URL', width: '60%' },
+      { label: 'Last Modified', select: 'lastmod', width: '25%' },
+      { label: 'Priority', select: 'priority', width: '15%' }
+    ],
+    defaults: {
+      changefreq: 'weekly',
+      priority: 0.8
+    }
   },
 
 })
