@@ -6,7 +6,7 @@ declare module '#app' {
   }
 }
 
-export interface CtfMenuGroup {
+export interface ContentfulMenuGroup {
   fields: {
     groupName: string;
     groupLink?: {
@@ -24,7 +24,7 @@ export interface CtfMenuGroup {
   };
 }
 
-export interface CtfLandingPage {
+export interface ContentfulLandingPage {
   fields: {
     pageName: string;
     slug: string;
@@ -46,4 +46,23 @@ export interface CtfLandingPage {
 export interface RichTextOptions {
   renderMark: {};
   renderNode: {};
+}
+
+export interface ContentfulImage {
+  fields: {
+    description?: string;
+    file: {
+      url: string;
+      width?: number;
+      height?: number;
+      fileName?: string;
+      details: {
+        image: {
+          height: number;
+          width: number;
+        };
+      };
+    };
+    title?: string;
+  };
 }

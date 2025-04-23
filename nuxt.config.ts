@@ -28,8 +28,14 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   
   image: {
-    domains: ['//images.ctfassets.net'],
-    quality: 90,
+    provider: 'contentful',
+    contentful: {
+      baseURL: 'https://images.ctfassets.net',
+      modifiers: {
+        format: 'webp',
+        quality: '85',
+      }
+    },
     screens: {
       xs: 320,
       sm: 640,
@@ -37,7 +43,7 @@ export default defineNuxtConfig({
       lg: 1024,
       xl: 1280,
       xxl: 1536,
-      '2xl': 1536
+      '2xl': 1536,
     }
   },
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { CtfLandingPage } from '~/types/contentful';
+import type { ContentfulLandingPage } from '~/types/contentful';
 
 const { data } = await useAsyncData(async () => {
   const { $contentfulClient } = useNuxtApp();
@@ -8,7 +8,8 @@ const { data } = await useAsyncData(async () => {
     include: 2
   });
 });
-const homepage = data.value?.items.find((item: CtfLandingPage) => item.fields.slug === 'home');
+
+const homepage = computed(() => data.value?.items.find((item: ContentfulLandingPage) => item.fields.slug === 'home'));
 </script>
 
 <template>

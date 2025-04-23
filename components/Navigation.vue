@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
-import type { CtfMenuGroup } from '~/types/contentful';
+import type { ContentfulMenuGroup } from '~/types/contentful';
 
 const { data } = await useAsyncData(async () => {
   const { $contentfulClient } = useNuxtApp();
@@ -12,7 +12,7 @@ const { data } = await useAsyncData(async () => {
 
 const menuItems = data.value?.items[0].fields.menuItems;
 
-const navItems = ref<NavigationMenuItem[]>(menuItems.map((group: CtfMenuGroup) => {
+const navItems = ref<NavigationMenuItem[]>(menuItems.map((group: ContentfulMenuGroup) => {
   const groupLabel = group.fields.groupName;
   let groupIcon = 'i-lucide-credit-card';
   groupLabel === 'Pricing' && (groupIcon = 'i-lucide-currency');
