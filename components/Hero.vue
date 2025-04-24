@@ -17,27 +17,20 @@ interface Props {
 }
 const props = defineProps<Props>();
 
-const { renderImage } = useContentfulImage();
-const imageProps = computed(() => renderImage(
+const { renderLazyImage } = useContentfulImage();
+const imageProps = computed(() => renderLazyImage(
   props.data.image,
   {
-    ...props.imageOptions,
-    sizesPreset: 'hero',
-    imgAttrs: {
-      class: 'absolute inset-0 w-full h-full object-cover',
-    }
+    class: 'absolute inset-0 w-full h-full object-cover',
   }
-));
+))
 
 const richTextContent = computed(() => props.data.bodyText || null);
 </script>
 
 <template>
   <div class="relative">
-    <NuxtPicture 
-      v-if="imageProps"
-      v-bind="imageProps"
-    />
+    <VLazyImage v-bind="imageProps" />
     <UContainer class="relative w-full h-full min-h-[75vh] flex items-center">
       <div class="flex flex-col py-10 h-full w-full lg:w-1/2">
         <h1 class="text-5xl font-bold mb-4" :class="[!props.data.headline && 'sr-only']">{{ props.data.headline || 'Contentful Starter' }}</h1>
@@ -52,7 +45,6 @@ const richTextContent = computed(() => props.data.bodyText || null);
 
 <style>
 @reference '@/assets/css/main.css';
-
 .contentful-rich-text {
   p {
     @apply text-2xl;

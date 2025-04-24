@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ContentfulEntry, PageFields } from '~/types/contentful'
+import type { PageFields } from '~/types/contentful'
 
 const route = useRoute();
 const slug = computed(() => route.params.slug as string);

@@ -42,6 +42,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   
   image: {
+    ipx: {},
     provider: 'contentful',
     contentful: {
       baseURL: 'https://images.ctfassets.net',
@@ -58,6 +59,18 @@ export default defineNuxtConfig({
       xl: 1280,
       xxl: 1536,
       '2xl': 1536,
+    },
+    presets: {
+      placeholder: {
+        provider: 'contentful',
+        modifiers: {
+          format: 'jpg',
+          fit: 'thumbnail',
+          width: 10,
+          height: 10,
+          quality: 70,
+        }
+      }
     }
   },
 
