@@ -29,9 +29,13 @@ useSeo(page)
   <div v-else-if="page">
     <UApp>
       <Navigation />
-      <UContainer>
-        <h1 class="">{{ page.fields.pageName }}</h1>
-      </UContainer>
+      <div class="h-full w-full bg-gradient-to-r from-violet-500 to-fuchsia-700">
+        <UContainer>
+          <div class="flex items-center h-full min-h-[75vh]">
+            <h1 class="text-7xl font-bold text-white">{{ page.fields.pageName }}</h1>
+          </div>
+        </UContainer>
+      </div>
     </UApp>
   </div>
   <div v-else>

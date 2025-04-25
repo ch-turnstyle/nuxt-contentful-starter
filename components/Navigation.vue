@@ -53,6 +53,7 @@ const navItems = ref<NavigationMenuItem[]>([
       :items="navItems"
       content-orientation="vertical"
       variant="link"
+      color="neutral"
       class="bg-white w-full justify-center z-50"
       :ui="{
         root: '[&>div]:w-full'

@@ -29,7 +29,7 @@ const richTextContent = computed(() => props.data.bodyText || null);
 </script>
 
 <template>
-  <div class="relative">
+  <div class="relative overflow-hidden">
     <VLazyImage v-bind="imageProps" />
     <UContainer class="relative w-full h-full min-h-[75vh] flex items-center">
       <div class="flex flex-col py-10 h-full w-full lg:w-1/2">
