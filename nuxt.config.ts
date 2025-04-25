@@ -81,6 +81,9 @@ export default defineNuxtConfig({
     ],
   },
 
+  // Disable robots
+  site: { indexable: false },
+
   sitemap: {
     sources: [
       '/api/__sitemap__/urls',
