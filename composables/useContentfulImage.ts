@@ -6,6 +6,12 @@ interface ImageOptions {
   alt?: string;
   sizes?: string;
   class?: string;
+  sizesPreset?: 'hero' | 'card';
+}
+
+enum ImageSizes {
+  hero = 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw 2xl:100vw 100vw',
+  card = 'xs:100vw sm:100vw md:75vw lg:60vw xl:50vw 100vw',
 }
 
 export const useContentfulImage = () => {
@@ -19,6 +25,12 @@ export const useContentfulImage = () => {
 
   const renderLazyImage = (image: ContentfulImage | undefined, options: ImageOptions = {}) => {
     if (!image || !image.fields.file.url) return null;
+    
+    // Use NuxtImg helper to render sizes, srcset, src
+    const $img = useImage();
+    let srcValues = $img.getSizes(image.fields.file.url, {
+      sizes: ImageSizes[options.sizesPreset || 'hero']
+    });
     
     // Extract Contentful image URL
     const imageUrl = image.fields.file.url;
@@ -38,12 +50,13 @@ export const useContentfulImage = () => {
     };
     
     return {
-      src: imageUrl,
+      usePicture: true,
+      ...srcValues,
       srcPlaceholder: placeholderUrl,
       alt: imageOptions.alt,
       width: imageOptions.width,
       height: imageOptions.height,
-      class: imageOptions.class
+      class: imageOptions.class,
     };
   };
   

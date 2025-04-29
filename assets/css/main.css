@@ -3,10 +3,6 @@
 
 @theme {
   --container-8xl: 90rem; /* 1440px */
-}
-
-:root {
-  --ui-container: var(--container-8xl);
 
   --breakpoint-2xs: 20rem;  /* 320px */
   --breakpoint-xs: 30rem;   /* 480px */
@@ -14,8 +10,13 @@
   --breakpoint-md: 48rem;   /* 768px */
   --breakpoint-lg: 64rem;   /* 1024px */
   --breakpoint-xl: 80rem;   /* 1280px */
-  --breakpoint-2xl: 96rem;  /* 1536px */
-  --breakpoint-3xl: 120rem; /* 1920px */
+  --breakpoint-2xl: 90rem;   /* 1440px */
+  --breakpoint-3xl: 96rem;  /* 1536px */
+  --breakpoint-4xl: 120rem; /* 1920px */
+}
+
+:root {
+  --ui-container: var(--container-8xl);
 }
 
 .v-lazy-image {
