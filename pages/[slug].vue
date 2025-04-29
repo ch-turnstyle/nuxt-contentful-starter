@@ -29,13 +29,19 @@ useSeo(page)
   <div v-else-if="page">
     <UApp>
       <Navigation />
-      <div class="h-full w-full bg-gradient-to-r from-violet-500 to-fuchsia-700">
+      <section class="h-full w-full bg-gradient-to-r from-violet-500 to-fuchsia-700">
         <UContainer>
           <div class="flex items-center h-full min-h-[75vh]">
             <h1 class="text-7xl font-bold text-white">{{ page.fields.pageName }}</h1>
           </div>
         </UContainer>
-      </div>
+      </section>
+      <section v-if="page.fields.pageContent.sys.contentType.sys.id === 'newsletterSignup'" class="">
+        <UContainer class=" py-10">
+          <h2 class="text-4xl my-4">{{ page.fields.pageContent.fields.headline }}</h2>
+          <NewsletterSignup />
+        </UContainer>
+      </section>
     </UApp>
   </div>
   <div v-else>
