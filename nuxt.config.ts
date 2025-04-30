@@ -23,13 +23,12 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     '@nuxt/ui',
-    '@nuxtjs/robots',
-    '@nuxtjs/sitemap',
+    '@nuxtjs/seo',
   ],
 
   app: {
     head: {
-      title: 'Starter | Contentful', // default fallback title
+      title: 'Starter | Contentful Site', // default fallback title
       htmlAttrs: {
         lang: 'en',
       },
@@ -38,6 +37,27 @@ export default defineNuxtConfig({
       ]
     },
     pageTransition: { name: 'page', mode: 'out-in' },
+  },
+
+  site: {
+    url: 'https://nuxt-contentful-starter-five.vercel.app',
+    name: 'Contentful Site',
+    indexable: false // Disable robots
+  },
+
+  sitemap: {
+    sources: [
+      '/api/__sitemap__/urls',
+    ],
+    xslColumns: [
+      { label: 'URL', width: '60%' },
+      { label: 'Last Modified', select: 'lastmod', width: '25%' },
+      { label: 'Priority', select: 'priority', width: '15%' }
+    ],
+    defaults: {
+      changefreq: 'weekly',
+      priority: 0.8
+    }
   },
 
   css: ['~/assets/css/main.css'],
@@ -80,24 +100,6 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
     ],
-  },
-
-  // Disable robots
-  site: { indexable: false },
-
-  sitemap: {
-    sources: [
-      '/api/__sitemap__/urls',
-    ],
-    xslColumns: [
-      { label: 'URL', width: '60%' },
-      { label: 'Last Modified', select: 'lastmod', width: '25%' },
-      { label: 'Priority', select: 'priority', width: '15%' }
-    ],
-    defaults: {
-      changefreq: 'weekly',
-      priority: 0.8
-    }
   },
 
 })

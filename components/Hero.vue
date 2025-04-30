@@ -16,27 +16,29 @@ interface Props {
   imageOptions?: Record<string, any>;
 }
 const props = defineProps<Props>();
+const imageProps = ref({});
+const richTextContent = ref('');
 
 const { renderLazyImage } = useContentfulImage();
-const imageProps = computed(() => renderLazyImage(
+imageProps.value = computed(() => renderLazyImage(
   props.data.image,
   {
     class: 'absolute inset-0 w-full h-full object-cover',
   }
-))
+));
 
-const richTextContent = computed(() => props.data.bodyText || null);
+richTextContent.value = computed(() => props.data.bodyText || '');
 </script>
 
 <template>
   <div class="relative overflow-hidden">
-    <VLazyImage v-bind="imageProps" />
+    <VLazyImage v-bind="imageProps.value" />
     <UContainer class="relative w-full h-full min-h-[75vh] flex items-center">
       <div class="flex flex-col py-10 h-full w-full lg:w-1/2">
         <h1 class="text-5xl font-bold mb-4" :class="[!props.data.headline && 'sr-only']">{{ props.data.headline || 'Contentful Starter' }}</h1>
         <ContentfulRichText 
-          v-if="richTextContent" 
-          :document="richTextContent"
+          v-if="richTextContent.value" 
+          :document="richTextContent.value"
         />
       </div>
     </UContainer>

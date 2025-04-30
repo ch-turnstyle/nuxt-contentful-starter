@@ -15,10 +15,10 @@ export function useSeo(data: Ref<ContentfulEntry<PageFields> | null>) {
     if (!data.value) {
       return {
         title: 'Contentful Site',
-        description: "We're just here, starting with Contentful",
+        description: `We're just here, starting with Contentful`,
         image: null,
         keywords: '',
-        canonical: `https://yourdomain.com${route.path}`
+        canonical: `https://nuxt-contentful-starter-five.vercel.app${route.path}`
       }
     }
     
@@ -27,10 +27,10 @@ export function useSeo(data: Ref<ContentfulEntry<PageFields> | null>) {
 
     return {
       title: `${seoFields.title || seoFields.name || fields.pageName} | Contentful Site` || 'Contentful Site',
-      description: seoFields.description || "We're just here, starting with Contentful",
+      description: seoFields.description || `We're just here, starting with Contentful`,
       image: seoFields.image?.fields?.file?.url || null,
       keywords: seoFields.keywords || '',
-      canonical: seoFields.canonical || `https://yourdomain.com${route.path}`
+      canonical: seoFields.canonical || `https://nuxt-contentful-starter-five.vercel.app${route.path}`
     }
   })
   
