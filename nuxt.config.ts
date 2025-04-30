@@ -15,6 +15,7 @@ export default defineNuxtConfig({
       CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
       // Read-only Content Delivery API access token
       CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
+      CONTENTFUL_PREVIEW_ACCESS_TOKEN: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
     }
   },
 

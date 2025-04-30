@@ -26,7 +26,7 @@ export function useSeo(data: Ref<ContentfulEntry<PageFields> | null>) {
     const seoFields = fields.seo?.fields || {} as SeoFields
 
     return {
-      title: `${seoFields.title || seoFields.name || fields.pageName} | Contentful Site` || 'Contentful Site',
+      title: `${seoFields.title || seoFields.name || fields.pageName}`,
       description: seoFields.description || `We're just here, starting with Contentful`,
       image: seoFields.image?.fields?.file?.url || null,
       keywords: seoFields.keywords || '',

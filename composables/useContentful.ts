@@ -2,7 +2,8 @@ import type { ContentfulEntry } from '~/types/contentful'
 import type { AsyncData } from 'nuxt/app'
 
 export function useContentful() {
-  const { $contentfulClient } = useNuxtApp()
+  const { $contentfulClient, $contentfulPreview } = useNuxtApp();
+  const previewData = $contentfulPreview();
   
   const fetchContentEntry = <T>(
     contentType: string, 
@@ -37,7 +38,7 @@ export function useContentful() {
         server: true,
         lazy: false,
         immediate: true,
-        watch: [], // Add reactive values to watch here if needed
+        watch: [previewData.isPreview], // Add reactive values to watch here if needed
         ...options
       }
     )
