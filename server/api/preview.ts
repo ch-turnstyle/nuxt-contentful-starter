@@ -55,17 +55,17 @@ export default defineEventHandler(async (event) => {
     })
 
     // Redirect to the page with the entry
-    let redirectUrl = `/${slug}`
-    if (query.redirectPath) {
-      redirectUrl = query.redirectPath as string
-    }
+    //let redirectUrl = `/${slug}`
+    //if (query.redirectPath) {
+    //  redirectUrl = query.redirectPath as string
+    //}
 
-    return {
-      statusCode: 307,
-      headers: {
-        Location: redirectUrl
-      }
-    }
+    //return {
+    //  statusCode: 307,
+    //  headers: {
+    //    Location: redirectUrl
+    //  }
+    //}
   } catch (error) {
     console.error('Preview error:', error)
     return {
