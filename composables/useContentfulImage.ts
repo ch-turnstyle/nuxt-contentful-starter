@@ -6,6 +6,7 @@ interface ImageOptions {
   alt?: string;
   sizes?: string;
   class?: string;
+  type?: string;
   sizesPreset?: 'hero' | 'card';
 }
 
@@ -42,6 +43,7 @@ export const useContentfulImage = () => {
       height: image.fields.file.details.image.height,
       alt: image.fields.title || '',
       class: '',
+      type: 'image/webp',
     };
 
     const imageOptions = { 
@@ -50,13 +52,17 @@ export const useContentfulImage = () => {
     };
     
     return {
-      usePicture: true,
       ...srcValues,
       srcPlaceholder: placeholderUrl,
       alt: imageOptions.alt,
       width: imageOptions.width,
       height: imageOptions.height,
       class: imageOptions.class,
+      type: imageOptions.type,
+      srcData: {
+        ...srcValues,
+        type: imageOptions.type,
+      }
     };
   };
   

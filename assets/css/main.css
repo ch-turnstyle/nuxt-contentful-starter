@@ -20,17 +20,19 @@
 }
 
 .v-lazy-image {
-  @apply blur-sm transition-[filter] will-change-[filter];
+  @apply blur-sm transition-[filter] will-change-[filter] duration-1000;
 
 }
+
 .v-lazy-image-loaded {
-  @apply blur-none;
+  @apply blur-none will-change-[filter];
 }
 
 .page-enter-active,
 .page-leave-active {
   transition: all 0.4s;
 }
+
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
