@@ -3,7 +3,7 @@ import type { AsyncData } from 'nuxt/app'
 
 export function useContentful() {
   const { $contentfulClient, $contentfulPreview } = useNuxtApp();
-  const previewData = $contentfulPreview();
+  const { isPreview } = $contentfulPreview();
   
   const fetchContentEntry = <T>(
     contentType: string, 
@@ -38,7 +38,7 @@ export function useContentful() {
         server: true,
         lazy: false,
         immediate: true,
-        watch: [previewData.isPreview], // Add reactive values to watch here if needed
+        watch: [isPreview], // Add reactive values to watch here if needed
         ...options
       }
     )

@@ -3,6 +3,9 @@ import * as Contentful from 'contentful';
 declare module '#app' {
   interface NuxtApp {
     $contentfulClient: Contentful.ContentfulClientApi;
+    $contentfulPreview: () => {
+      isPreview: Ref<boolean>
+    }
   }
 }
 
