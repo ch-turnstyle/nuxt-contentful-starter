@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 import tailwindcss from "@tailwindcss/vite";
+import { defineOrganization } from 'nuxt-schema-org/schema'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -28,22 +29,53 @@ export default defineNuxtConfig({
   ],
 
   app: {
-    head: {
-      title: 'Starter | Contentful Site', // default fallback title
-      htmlAttrs: {
-        lang: 'en',
-      },
-      link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      ]
-    },
     pageTransition: { name: 'page', mode: 'out-in' },
+    head: {
+      templateParams: {
+        separator: '•',
+      }
+    }
   },
 
   site: {
     url: 'https://nuxt-contentful-starter-five.vercel.app',
     name: 'Contentful Site',
-    indexable: false // Disable robots
+    indexable: false, // Disable robots
+  },
+
+  seo: {
+    meta: {
+      description: "We're just here, starting with Contentful",
+      themeColor: [
+        { content: '#030712', media: '(prefers-color-scheme: dark)' },
+        { content: 'white', media: '(prefers-color-scheme: light)' },
+      ],
+      twitterCreator: '@mytwitter',
+      twitterSite: '@mysite',
+      author: 'Christine',
+      colorScheme: 'dark light',
+      applicationName: 'Contentful Site',
+    }
+  },
+
+  // https://nuxtseo.com/docs/schema-org/guides/setup-identity
+  schemaOrg: {
+    identity: defineOrganization({
+
+      // Basic Information (Required)
+      'name': 'Contentful Starter',
+      'description': "We're just here, starting with Contentful",
+      'url': 'https://nuxt-contentful-starter-five.vercel.app',
+
+      // Location (Required)
+      'address': {
+        streetAddress: '114 NW Canal St, Ste 200',
+        addressLocality: 'Seattle',
+        addressRegion: 'WA',
+        postalCode: '98107',
+        addressCountry: 'US'
+      },
+    }),
   },
 
   sitemap: {

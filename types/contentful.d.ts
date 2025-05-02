@@ -55,8 +55,6 @@ export interface SeoFields {
   name: string;
   title?: string;
   description?: string;
-  keywords?: string;
-  canonical?: string;
   image?: {
     fields: {
       file: {
@@ -64,8 +62,8 @@ export interface SeoFields {
       }
     }
   };
-  noIndex?: boolean;
-  noFollow?: boolean;
+  robots: string;
+  canonicalUrl?: string;
 }
 
 export interface PageFields {

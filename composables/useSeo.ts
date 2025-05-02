@@ -4,7 +4,7 @@ interface SeoData {
   title: string;
   description: string;
   image: string | null;
-  keywords: string;
+  robots: string;
   canonical: string;
 }
 
@@ -17,7 +17,7 @@ export function useSeo(data: Ref<ContentfulEntry<PageFields> | null>) {
         title: 'Contentful Site',
         description: `We're just here, starting with Contentful`,
         image: null,
-        keywords: '',
+        robots: 'all',
         canonical: `https://nuxt-contentful-starter-five.vercel.app${route.path}`
       }
     }
@@ -29,8 +29,8 @@ export function useSeo(data: Ref<ContentfulEntry<PageFields> | null>) {
       title: `${seoFields.title || seoFields.name || fields.pageName}`,
       description: seoFields.description || `We're just here, starting with Contentful`,
       image: seoFields.image?.fields?.file?.url || null,
-      keywords: seoFields.keywords || '',
-      canonical: seoFields.canonical || `https://nuxt-contentful-starter-five.vercel.app${route.path}`
+      robots: seoFields.robots,
+      canonical: seoFields.canonicalUrl || `https://nuxt-contentful-starter-five.vercel.app${route.path}`
     }
   })
   
@@ -38,7 +38,7 @@ export function useSeo(data: Ref<ContentfulEntry<PageFields> | null>) {
     title: seoData.value.title,
     meta: [
       { name: 'description', content: seoData.value.description },
-      { name: 'keywords', content: seoData.value.keywords },
+      { name: 'robots', content: seoData.value.robots },
       
       // Open Graph
       { property: 'og:title', content: seoData.value.title },
