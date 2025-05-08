@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PageFields } from '~/types/contentful'
+import type { LandingPageFields } from '~/types/contentful'
 
 const route = useRoute();
 const slug = computed(() => route.params.slug as string);
@@ -9,8 +9,8 @@ const { fetchContentEntry, refreshContent } = useContentful();
 const contentKey = computed(() => `page-${slug.value}`)
 
 // Fetch the page content using useAsyncData under the hood
-const { data: page, status, error, refresh } = fetchContentEntry<PageFields>(
-  'page', 
+const { data: page, status, error, refresh } = fetchContentEntry<LandingPageFields>(
+  'landingPageDefault', 
   slug.value,
   { key: contentKey.value }
 )
@@ -32,16 +32,20 @@ useSeo(page)
       <section class="h-full w-full bg-gradient-to-r from-violet-500 to-fuchsia-700">
         <UContainer>
           <div class="flex items-center h-full min-h-[75vh]">
-            <h1 class="text-7xl font-bold text-white">{{ page.fields.pageName }}</h1>
+            <h1 class="text-7xl font-bold text-white">{{ page.fields.title }}</h1>
           </div>
         </UContainer>
       </section>
-      <section v-if="page.fields.pageContent.sys.contentType.sys.id === 'newsletterSignup'" class="">
-        <UContainer class=" py-10">
-          <h2 class="text-4xl my-4">{{ page.fields.pageContent.fields.headline }}</h2>
-          <NewsletterSignup />
-        </UContainer>
-      </section>
+      <template v-if="page.fields.components">
+        <section v-for="component in page.fields.components" :key="component.sys.id">
+          <template v-if="component.sys.contentType.sys.id === 'newsletterSignup'">
+            <UContainer class=" py-10">
+              <h2 class="text-4xl my-4">{{ component.fields.headline }}</h2>
+              <NewsletterSignup />
+            </UContainer>
+          </template>
+        </section>
+      </template>
     </UApp>
   </div>
   <div v-else>

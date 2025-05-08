@@ -107,3 +107,15 @@ export interface ContentfulEntry<T> {
   };
   fields: T;
 }
+
+export interface LandingPageFields {
+  title: string;
+  slug: string;
+  seoSettings?: {
+    fields: SeoFields;
+  }
+  hero?: {
+    fields: {};
+  }
+  components?: Array<ContentfulEntry>;
+}

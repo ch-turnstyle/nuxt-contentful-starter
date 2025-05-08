@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PageFields } from '~/types/contentful';
+import type { LandingPageFields } from '~/types/contentful';
 
 const slug = 'home';
 const { fetchContentEntry, refreshContent } = useContentful();
@@ -8,8 +8,8 @@ const { fetchContentEntry, refreshContent } = useContentful();
 const contentKey = computed(() => `page-${slug}`)
 
 // Fetch the page content using useAsyncData under the hood
-const { data: page, status, error, refresh } = fetchContentEntry<PageFields>(
-  'page',
+const { data: page, status, error, refresh } = fetchContentEntry<LandingPageFields>(
+  'landingPageDefault',
   slug,
   { key: contentKey.value }
 )
@@ -28,12 +28,12 @@ useSeo(page);
   <div v-else-if="page">
     <UApp>
       <Navigation />
-      <div v-for="section in page.fields.topSection" :key="section.sys.id">
+      <!--<div v-for="section in page.fields.topSection" :key="section.sys.id">
         <Hero
           v-if="section.sys.contentType.sys.id === 'componentHeroBanner'"
           :data="section.fields"
         />
-      </div>
+      </div>-->
     </UApp>
   </div>
   <div v-else>

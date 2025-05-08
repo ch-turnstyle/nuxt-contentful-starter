@@ -1,4 +1,4 @@
-import type { ContentfulEntry, PageFields, SeoFields } from '~/types/contentful'
+import type { ContentfulEntry, LandingPageFields, SeoFields } from '~/types/contentful'
 
 interface SeoData {
   title: string;
@@ -8,7 +8,7 @@ interface SeoData {
   canonical: string;
 }
 
-export function useSeo(data: Ref<ContentfulEntry<PageFields> | null>) {
+export function useSeo(data: Ref<ContentfulEntry<LandingPageFields> | null>) {
   const route = useRoute()
   
   const seoData = computed<SeoData>(() => {
@@ -23,10 +23,10 @@ export function useSeo(data: Ref<ContentfulEntry<PageFields> | null>) {
     }
     
     const fields = data.value.fields
-    const seoFields = fields.seo?.fields || {} as SeoFields
+    const seoFields = fields.seoSettings?.fields || {} as SeoFields
 
     return {
-      title: `${seoFields.title || seoFields.name || fields.pageName}`,
+      title: `${seoFields.title || fields.title}`,
       description: seoFields.description || `We're just here, starting with Contentful`,
       image: seoFields.image?.fields?.file?.url || null,
       robots: seoFields.robots,
