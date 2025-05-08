@@ -115,7 +115,7 @@ export interface LandingPageFields {
     fields: SeoFields;
   }
   hero?: {
-    fields: {};
+    fields: T;
   }
   components?: Array<ContentfulEntry>;
 }

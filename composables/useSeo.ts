@@ -8,7 +8,7 @@ interface SeoData {
   canonical: string;
 }
 
-export function useSeo(data: Ref<ContentfulEntry<LandingPageFields> | null>) {
+export const useSeo = (data: Ref<ContentfulEntry<LandingPageFields> | null>) => {
   const route = useRoute()
   
   const seoData = computed<SeoData>(() => {

@@ -1,7 +1,7 @@
 import type { ContentfulEntry } from '~/types/contentful'
 import type { AsyncData } from 'nuxt/app'
 
-export function useContentful() {
+export const useContentful = () => {
   const { $contentfulClient, $contentfulPreview } = useNuxtApp();
   const { isPreview } = $contentfulPreview();
   

@@ -28,12 +28,9 @@ useSeo(page);
   <div v-else-if="page">
     <UApp>
       <Navigation />
-      <!--<div v-for="section in page.fields.topSection" :key="section.sys.id">
-        <Hero
-          v-if="section.sys.contentType.sys.id === 'componentHeroBanner'"
-          :data="section.fields"
-        />
-      </div>-->
+      <template v-if="page.fields.hero">
+        <Hero v-bind="page.fields.hero.fields" />
+      </template>
     </UApp>
   </div>
   <div v-else>
