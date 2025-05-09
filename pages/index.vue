@@ -19,21 +19,23 @@ useSeo(page);
 </script>
 
 <template>
-  <div v-if="status === 'pending'">
-    <p>Loading...</p>
-  </div>
-  <div v-else-if="error">
-    <p>Error loading page: {{ error }}</p>
-  </div>
-  <div v-else-if="page">
-    <UApp>
-      <Navigation />
-      <template v-if="page.fields.hero">
-        <Hero v-bind="page.fields.hero.fields" />
-      </template>
-    </UApp>
-  </div>
-  <div v-else>
-    <p>Page not found</p>
+  <div>
+    <div v-if="status === 'pending'">
+      <p class="absolute">Loading...</p>
+    </div>
+    <div v-else-if="error">
+      <p>Error loading page: {{ error }}</p>
+    </div>
+    <div v-else-if="page">
+      <UApp>
+        <Navigation />
+        <template v-if="page.fields.hero">
+          <Hero v-bind="page.fields.hero.fields" />
+        </template>
+      </UApp>
+    </div>
+    <div v-else>
+      <p>Page not found</p>
+    </div>
   </div>
 </template>
